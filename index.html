@@ -1,0 +1,263 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Editor Icon</title>
+</head>
+
+<body>
+  <main class="main">
+    <ul id="iconBox"></ul>
+  </main>
+
+  <script type="module">
+    const icons = {
+      // 撤销
+      undo: `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em"
+        height="1em" fill="currentColor" viewBox="0 0 20 20" class="icon">
+        <path
+          d="M3 5H12.0122C15.6129 5 18 7.70418 18 11C18 14.2958 15.6129 17 12.0122 17H8V16H12.0122C15.0255 16 17 13.7793 17 11C17 8.22069 15.0255 6 12.0122 6H3V5Z"
+          style="fill: inherit;"></path>
+        <path
+          d="M5.64592 1.64694L6.35399 2.35309L3.20706 5.50859L6.35302 8.64598L5.64688 9.35405L1.79285 5.51051L5.64592 1.64694Z"
+          style="fill: inherit;"></path>
+      </svg>`,
+      // 重做
+      redo: `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em"
+        height="1em" fill="currentColor" viewBox="0 0 20 20" class="icon">
+        <path
+          d="M7.98781 6C4.97453 6 3 8.22069 3 11C3 13.7793 4.97453 16 7.98781 16H12.1564V17H7.98781C4.38714 17 2 14.2958 2 11C2 7.70418 4.38714 5 7.98781 5H17V6H7.98781Z"
+          style="fill: inherit;"></path>
+        <path
+          d="M16.7929 5.50841L14.1459 2.85299L14.8541 2.147L18.2071 5.51066L14.853 8.85411L14.147 8.14588L16.7929 5.50841Z"
+          style="fill: inherit;"></path>
+      </svg>`,
+      // 格式刷
+      brush: `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em"
+        height="1em" fill="currentColor" viewBox="0 0 20 20" class="icon">
+        <path
+          d="M3.5 3C3.22386 3 3 3.22386 3 3.5V6.5C3 6.77614 3.22386 7 3.5 7H14.5C14.7761 7 15 6.77614 15 6.5V3.5C15 3.22386 14.7761 3 14.5 3H3.5ZM2 3.5C2 2.67157 2.67157 2 3.5 2H14.5C15.3284 2 16 2.67157 16 3.5V6.5C16 7.32843 15.3284 8 14.5 8H3.5C2.67157 8 2 7.32843 2 6.5V3.5Z"
+          style="fill: inherit;"></path>
+        <path
+          d="M7 13C7 12.4477 7.44772 12 8 12H10C10.5523 12 11 12.4477 11 13V17C11 17.5523 10.5523 18 10 18H8C7.44772 18 7 17.5523 7 17L7 13ZM10 13L8 13V17H10V13Z"
+          style="fill: inherit;"></path>
+        <path
+          d="M17 5.5H16.0038V4.5H17C17.5523 4.5 18 4.94771 18 5.5V9C18 9.55228 17.5523 10 17 10H9.5V12H8.5V10C8.5 9.44772 8.94772 9 9.5 9H17V5.5Z"
+          style="fill: inherit;"></path>
+      </svg>`,
+      // 擦出
+      erase: `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em"
+        height="1em" fill="currentColor" viewBox="0 0 20 20" class="icon">
+        <path
+          d="M11.8536 3.56066C11.6583 3.3654 11.3417 3.3654 11.1465 3.56066L2.54855 12.1586C2.35567 12.3515 2.35297 12.6633 2.54248 12.8595L6.53941 16.9974L9.33863 16.9998L16.9423 9.35452C17.1366 9.1591 17.1362 8.84326 16.9413 8.64838L11.8536 3.56066ZM10.4394 2.85356C11.0252 2.26777 11.9749 2.26777 12.5607 2.85356L17.6484 7.94127C18.2331 8.52592 18.2344 9.47344 17.6513 10.0597L9.75408 18.0002L6.11465 17.997L1.82323 13.5543C1.25471 12.9657 1.26281 12.0301 1.84144 11.4515L10.4394 2.85356Z"
+          style="fill: inherit;"></path>
+        <path
+          d="M7 17.5C7 17.2239 7.22386 17 7.5 17H17.5C17.7761 17 18 17.2239 18 17.5C18 17.7761 17.7761 18 17.5 18H7.5C7.22386 18 7 17.7761 7 17.5Z"
+          style="fill: inherit;"></path>
+        <path d="M11.1465 15.8536L4.64648 9.35356L5.35359 8.64645L11.8536 15.1465L11.1465 15.8536Z"
+          style="fill: inherit;"></path>
+      </svg>`,
+      // 粗体
+      bold: `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em"
+        height="1em" fill="currentColor" viewBox="0 0 20 20" class="icon">
+        <path
+          d="M5.80005 3.04999C5.38584 3.04999 5.05005 3.38577 5.05005 3.79999V9.79999V16.3C5.05005 16.7142 5.38584 17.05 5.80005 17.05H11.3C13.5971 17.05 15.05 15.1877 15.05 13.05C15.05 11.6347 14.4132 10.3402 13.3162 9.62682C14.0505 8.99194 14.55 8.03943 14.55 6.79999C14.55 4.37648 12.64 3.04999 10.8 3.04999H5.80005ZM10.8 9.04999H6.55005V4.54999H10.8C11.9601 4.54999 13.05 5.34597 13.05 6.79999C13.05 8.25401 11.9601 9.04999 10.8 9.04999ZM6.55005 10.55H10.8H11.3C12.6142 10.55 13.55 11.5773 13.55 13.05C13.55 14.5227 12.6142 15.55 11.3 15.55H6.55005V10.55Z"
+          style="fill: inherit;"></path>
+      </svg>`,
+      // 删除线
+      strikethrough: `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="1em" height="1em" fill="currentColor" viewBox="0 0 20 20" class="icon">
+        <path
+          d="M7.11474 3.98367C7.87095 3.32945 8.92018 3 10.0728 3C12.1311 3 13.7041 4.51772 14.0571 6.66903L13.0703 6.83097C12.7833 5.08216 11.5637 4 10.0728 4C9.1009 4 8.30301 4.27795 7.769 4.73994C7.24619 5.19223 6.93685 5.85308 6.98101 6.7247C6.99494 6.99978 7.051 7.23763 7.13674 7.44646C7.22021 7.64977 7.33482 7.83281 7.47576 8.00002H6.28958C6.26203 7.94348 6.23602 7.88557 6.21168 7.82626C6.08146 7.50909 6.00175 7.15957 5.98229 6.7753C5.92334 5.61173 6.34732 4.64758 7.11474 3.98367Z"
+          style="fill: inherit;"></path>
+        <path
+          d="M11.276 11H13.4094C13.6313 11.1922 13.829 11.4188 13.9931 11.6938C14.6646 12.8193 14.6768 14.1627 13.9826 15.229C13.2864 16.2985 11.9423 17 10.0727 17C8.13849 17 6.97107 16.0847 6.30827 15.0665C5.66635 14.0805 5.49999 13.0076 5.5 12.6L6.5 12.6C6.5 12.8424 6.62459 13.7195 7.14633 14.521C7.64718 15.2903 8.51613 16 10.0727 16C11.694 16 12.6771 15.4015 13.1446 14.6835C13.6141 13.9623 13.6263 13.0307 13.1343 12.2062C12.8906 11.7978 12.5157 11.526 11.9542 11.2723C11.7478 11.1791 11.523 11.0911 11.276 11Z"
+          style="fill: inherit;"></path>
+        <path d="M3 10H17V9H3V10Z" style="fill: inherit;"></path>
+      </svg>`,
+      // 下划线
+      underline: `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="1em" height="1em" fill="currentColor" viewBox="0 0 20 20" class="icon">
+        <path
+          d="M6 10.5V3H5V10.5C5 12.9853 7.01472 15 9.5 15C11.9853 15 14 12.9853 14 10.5V3H13V10.5C13 12.433 11.433 14 9.5 14C7.567 14 6 12.433 6 10.5Z"
+          style="fill: inherit;"></path>
+        <path d="M3 17V18H16V17H3Z" style="fill: inherit;"></path>
+      </svg>`,
+      // 斜体
+      italic: `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em"
+        height="1em" fill="currentColor" viewBox="0 0 20 20" class="icon">
+        <path d="M12.0004 4H15V3H8V4H10.7688L7.99962 16H5V17H12V16H9.23115L12.0004 4Z" style="fill: inherit;"></path>
+      </svg>`,
+      // 字体颜色
+      font_color: `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="1em" height="1em" fill="currentColor" viewBox="0 0 20 20" class="icon">
+        <path d="M19 20H1V17H19V20Z" style="fill: rgb(64, 64, 64);"></path>
+        <path d="M1.5 19.5V17.5H18.5V19.5H1.5ZM19 20V17H1V20H19Z" style="fill: transparent;"></path>
+        <path
+          d="M7.53848 11L5.93848 15H4.86145L9.53573 3.3143H10.4642L15.1385 15H14.0615L12.4615 11H7.53848ZM7.93848 10H12.0615L9.99997 4.84629L7.93848 10Z"
+          style="fill: inherit;"></path>
+      </svg>`,
+      // 背景色
+      bg_color: `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="1em" height="1em" fill="currentColor" viewBox="0 0 20 20" class="icon">
+        <path d="M19 20H1V17H19V20Z" style="fill: rgb(253, 190, 61);"></path>
+        <path d="M1.5 19.5V17.5H18.5V19.5H1.5ZM19 20V17H1V20H19Z" style="fill: transparent;"></path>
+        <path
+          d="M9.66669 3.55721C10.4586 2.4262 12.0175 2.15133 13.1485 2.94327L14.7868 4.09042C15.9163 4.88128 16.1919 6.43694 15.404 7.56757L11.8784 12.8425C11.841 12.8985 11.7928 12.9463 11.7365 12.9831L9.48339 14.4574C9.31492 14.5676 9.09709 14.5659 8.93055 14.4539L8.54817 15H3.77222L5.6631 12.1661L5.64622 12.1543C5.47874 12.037 5.39953 11.8296 5.44622 11.6305L6.06101 9.00908C6.0747 8.9507 6.09878 8.89525 6.1321 8.8454L9.66057 3.56616L9.66669 3.55721ZM10.4887 4.12666L7.51325 8.57855L11.6088 11.4463L14.5815 6.9986C15.0567 6.31999 14.8918 5.38474 14.2132 4.90958L12.5749 3.76242C11.8977 3.28822 10.9648 3.45151 10.4887 4.12666ZM6.49709 11.5293L9.21911 13.4353L11.0215 12.2559L6.98891 9.43218L6.49709 11.5293Z"
+          style="fill: inherit;"></path>
+      </svg>`,
+      // 增加缩进
+      indent_increase: `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="1em" height="1em" fill="currentColor" viewBox="0 0 20 20" class="icon">
+        <path d="M9 10.5574L5 7V13.9824L9 10.5574Z" style="fill: rgb(0, 137, 255);"></path>
+        <path d="M3 10H6V11H3V10Z" style="fill: rgb(0, 137, 255);"></path>
+        <path d="M17 5H3V4H17V5Z" style="fill: inherit;"></path>
+        <path d="M17 13H11V12H17V13Z" style="fill: inherit;"></path>
+        <path d="M17 9H11V8H17V9Z" style="fill: inherit;"></path>
+        <path d="M17 17H3V16H17V17Z" style="fill: inherit;"></path>
+      </svg>`,
+      // 减少缩进
+      indent_reduce: `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="1em" height="1em" fill="currentColor" viewBox="0 0 20 20" class="icon">
+        <path d="M17 5H3V4H17V5Z" style="fill: inherit;"></path>
+        <path d="M17 13H11V12H17V13Z" style="fill: inherit;"></path>
+        <path d="M17 9H11V8H17V9Z" style="fill: inherit;"></path>
+        <path d="M17 17H3V16H17V17Z" style="fill: inherit;"></path>
+        <path d="M9 11H7V10H9V11Z" style="fill: rgb(0, 137, 255);"></path>
+        <path d="M7 7V14L3 10.5L7 7Z" style="fill: rgb(0, 137, 255);"></path>
+      </svg>`,
+      //左对齐
+      align_left: `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="1em" height="1em" fill="currentColor" viewBox="0 0 20 20" class="icon">
+        <path d="M17 5H3V4H17V5Z" style="fill: inherit;"></path>
+        <path d="M10 9H3V8H10V9Z" style="fill: inherit;"></path>
+        <path d="M17 13V12H3V13H17Z" style="fill: inherit;"></path>
+        <path d="M10 17H3V16H10V17Z" style="fill: inherit;"></path>
+      </svg>`,
+      // 右对齐
+      align_right: `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="1em" height="1em" fill="currentColor" viewBox="0 0 20 20" class="icon">
+        <path d="M3 5H17V4H3V5Z" style="fill: inherit;"></path>
+        <path d="M17 13V12H3V13H17Z" style="fill: inherit;"></path>
+        <path d="M17 9H10V8H17V9Z" style="fill: inherit;"></path>
+        <path d="M10 17H17V16H10V17Z" style="fill: inherit;"></path>
+      </svg>`,
+      // 居中对齐
+      align_center: `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="1em" height="1em" fill="currentColor" viewBox="0 0 20 20" class="icon">
+        <path d="M3 5H17V4H3V5Z" style="fill: inherit;"></path>
+        <path d="M3 13H17V12H3V13Z" style="fill: inherit;"></path>
+        <path d="M13 9H7V8H13V9Z" style="fill: inherit;"></path>
+        <path d="M7 17H13V16H7V17Z" style="fill: inherit;"></path>
+      </svg>`,
+      // 两端对齐
+      align_justify: `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="1em" height="1em" fill="currentColor" viewBox="0 0 20 20" class="icon">
+        <path d="M3 5H17V4H3V5Z" style="fill: inherit;"></path>
+        <path d="M3 13H17V12H3V13Z" style="fill: inherit;"></path>
+        <path d="M17 9H3V8H17V9Z" style="fill: inherit;"></path>
+        <path d="M3 17H17V16H3V17Z" style="fill: inherit;"></path>
+      </svg>`,
+      // 无序列表
+      unorder_list: `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="1em" height="1em" fill="currentColor" viewBox="0 0 20 20" class="icon">
+        <path d="M19 20H1V17H19V20Z" style="fill: rgb(253, 190, 61);"></path>
+        <path d="M1.5 19.5V17.5H18.5V19.5H1.5ZM19 20V17H1V20H19Z" style="fill: transparent;"></path>
+        <path
+          d="M9.66669 3.55721C10.4586 2.4262 12.0175 2.15133 13.1485 2.94327L14.7868 4.09042C15.9163 4.88128 16.1919 6.43694 15.404 7.56757L11.8784 12.8425C11.841 12.8985 11.7928 12.9463 11.7365 12.9831L9.48339 14.4574C9.31492 14.5676 9.09709 14.5659 8.93055 14.4539L8.54817 15H3.77222L5.6631 12.1661L5.64622 12.1543C5.47874 12.037 5.39953 11.8296 5.44622 11.6305L6.06101 9.00908C6.0747 8.9507 6.09878 8.89525 6.1321 8.8454L9.66057 3.56616L9.66669 3.55721ZM10.4887 4.12666L7.51325 8.57855L11.6088 11.4463L14.5815 6.9986C15.0567 6.31999 14.8918 5.38474 14.2132 4.90958L12.5749 3.76242C11.8977 3.28822 10.9648 3.45151 10.4887 4.12666ZM6.49709 11.5293L9.21911 13.4353L11.0215 12.2559L6.98891 9.43218L6.49709 11.5293Z"
+          style="fill: inherit;"></path>
+      </svg>`,
+      // 有序列表
+      order_list: `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="1em" height="1em" fill="currentColor" viewBox="0 0 20 20" class="icon">
+        <path d="M18 11H7V10H18V11Z" style="fill: inherit;"></path>
+        <path d="M18 6H7V5H18V6Z" style="fill: inherit;"></path>
+        <path d="M3.99994 3.5V6H2.99994V4.5H2.5V3.5H3.99994Z" style="fill: rgb(0, 137, 255);"></path>
+        <path d="M2.25 6H4.75V7H2.25V6Z" style="fill: rgb(0, 137, 255);"></path>
+        <path d="M3.75 9.5H2.25V8.5H4.75V10.75H3.25V11H4.75V12H2.25V9.75H3.75V9.5Z" style="fill: rgb(0, 137, 255);">
+        </path>
+        <path d="M3.75 14.375H2.25V13.5H4.75V17H2.25V16.125H3.75V15.6875H2.25V14.8125H3.75V14.375Z"
+          style="fill: rgb(0, 137, 255);"></path>
+        <path d="M18 16H7V15H18V16Z" style="fill: inherit;"></path>
+      </svg>`,
+      // 任务列表
+      todo_list: `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="1em" height="1em" fill="currentColor" viewBox="0 0 20 20" class="icon">
+        <path
+          d="M5.5 4.00006C4.67157 4.00006 4 4.67163 4 5.50006V14.5001C4 15.3285 4.67157 16.0001 5.5 16.0001H14.5C15.3284 16.0001 16 15.3285 16 14.5001V8H17V14.5001C17 15.8808 15.8807 17.0001 14.5 17.0001H5.5C4.11929 17.0001 3 15.8808 3 14.5001V5.50006C3 4.11935 4.11929 3.00006 5.5 3.00006H13V4.00006H5.5Z"
+          style="fill: inherit;"></path>
+        <path
+          d="M9.00004 11.2929L16.1465 4.14642L16.8536 4.85353L9.35359 12.3535C9.15833 12.5488 8.84175 12.5488 8.64648 12.3535L5.64648 9.35353L6.35359 8.64642L9.00004 11.2929Z"
+          style="fill: inherit;"></path>
+      </svg>`,
+      // 表格
+      table: `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em"
+        height="1em" fill="currentColor" viewBox="0 0 20 20" class="icon">
+        <path
+          d="M2 4.5C2 3.67157 2.67157 3 3.5 3H16.5C17.3284 3 18 3.67157 18 4.5V15.5C18 16.3284 17.3284 17 16.5 17H3.5C2.67157 17 2 16.3284 2 15.5V4.5ZM3.5 4C3.22386 4 3 4.22386 3 4.5V15.5C3 15.7761 3.22386 16 3.5 16H16.5C16.7761 16 17 15.7761 17 15.5V4.5C17 4.22386 16.7761 4 16.5 4H3.5Z"
+          style="fill: inherit;"></path>
+        <path d="M7 16V7H8V16H7Z" style="fill: inherit;"></path>
+        <path d="M12 16V7H13V16H12Z" style="fill: inherit;"></path>
+        <path d="M18 12H2V11H18V12Z" style="fill: inherit;"></path>
+        <path d="M18 7H2V6H18V7Z" style="fill: inherit;"></path>
+      </svg>`,
+      // 链接
+      link: `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em"
+        height="1em" fill="currentColor" viewBox="0 0 20 20" class="icon">
+        <path
+          d="M10.7072 13.5355L8.58591 15.6568C7.41434 16.8284 5.51485 16.8284 4.34327 15.6568C3.1717 14.4853 3.1717 12.5858 4.34327 11.4142L6.46459 9.29288C7.63617 8.12131 9.53566 8.12131 10.7072 9.29288L11.4143 9.99998L12.1211 9.29255L11.4143 8.58578C9.85224 7.02368 7.31958 7.02368 5.75749 8.58578L3.63617 10.7071C2.07407 12.2692 2.07407 14.8019 3.63617 16.3639C5.19826 17.926 7.73092 17.926 9.29302 16.3639L11.4143 14.2426L10.7072 13.5355Z"
+          style="fill: inherit;"></path>
+        <path
+          d="M9.29302 6.46445L11.4143 4.34313C12.5784 3.17911 14.5604 3.24651 15.657 4.34313C16.7536 5.43976 16.821 7.42175 15.657 8.58578L13.5357 10.7071C12.3641 11.8787 10.4646 11.8787 9.29302 10.7071L8.58592 9.99999L7.87906 10.7074L8.58591 11.4142C10.148 12.9763 12.6807 12.9763 14.2428 11.4142L16.3641 9.29288C17.9337 7.72323 17.836 5.1079 16.3641 3.63603C14.8922 2.16415 12.2769 2.06638 10.7072 3.63603L8.58591 5.75735L9.29302 6.46445Z"
+          style="fill: inherit;"></path>
+      </svg>`,
+      // 代码块
+      code_block: `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="1em" height="1em" fill="currentColor" viewBox="0 0 20 20" class="icon">
+        <path
+          d="M12.0385 3.80769L7.03845 15.8077L7.96153 16.1923L12.9615 4.19231L12.0385 3.80769ZM1 10L4.88909 6.11091L5.59619 6.81802L2.41421 10L5.59619 13.182L4.88909 13.8891L1 10ZM19 10L15.1109 6.11091L14.4038 6.81802L17.5858 10L14.4038 13.182L15.1109 13.8891L19 10Z"
+          style="fill: inherit;"></path>
+      </svg>`,
+      // 图片
+      image: `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em"
+        height="1em" fill="currentColor" viewBox="0 0 20 20" class="icon">
+        <path
+          d="M6 5.5C5.17157 5.5 4.5 6.17157 4.5 7C4.5 7.82843 5.17157 8.5 6 8.5C6.82843 8.5 7.5 7.82843 7.5 7C7.5 6.17157 6.82843 5.5 6 5.5ZM5.5 7C5.5 6.72386 5.72386 6.5 6 6.5C6.27614 6.5 6.5 6.72386 6.5 7C6.5 7.27614 6.27614 7.5 6 7.5C5.72386 7.5 5.5 7.27614 5.5 7Z"
+          style="fill: inherit;"></path>
+        <path
+          d="M2 4.5V15.5C2 16.3284 2.67157 17 3.5 17H16.5C17.3284 17 18 16.3284 18 15.5V4.5C18 3.67157 17.3284 3 16.5 3H3.5C2.67157 3 2 3.67157 2 4.5ZM17 4.5V11.5147L14.1317 8.64645C13.9364 8.45118 13.6199 8.45118 13.4246 8.64645L9.3137 12.7573L6.63174 10.0754C6.43647 9.88011 6.11989 9.88011 5.92463 10.0754L3 13V4.5C3 4.22386 3.22386 4 3.5 4H16.5C16.7761 4 17 4.22386 17 4.5ZM3 15.5V14.4142L6.27818 11.136L8.6066 13.4644L6.07104 16H3.5C3.22386 16 3 15.7761 3 15.5ZM16.5 16H7.48526L13.7782 9.70711L17 12.929V15.5C17 15.7761 16.7761 16 16.5 16Z"
+          style="fill: inherit;"></path>
+      </svg>`,
+      // 视频
+      video: `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em"
+        height="1em" fill="currentColor" viewBox="0 0 20 20" class="icon">
+        <path
+          d="M2 4.5C2 3.67157 2.67157 3 3.5 3H16.5C17.3284 3 18 3.67157 18 4.5V15.5C18 16.3284 17.3284 17 16.5 17H3.5C2.67157 17 2 16.3284 2 15.5V4.5ZM3.5 4C3.22386 4 3 4.22386 3 4.5V6H5.80629L5.13962 4H3.5ZM6.19371 4L6.86038 6H9.80629L9.13962 4H6.19371ZM10.1937 4L10.8604 6H13.8063L13.1396 4H10.1937ZM14.1937 4L14.8604 6H17V4.5C17 4.22386 16.7761 4 16.5 4H14.1937ZM17 7H3V15.5C3 15.7761 3.22386 16 3.5 16H16.5C16.7761 16 17 15.7761 17 15.5V7ZM9.8 9.10005C9.47038 8.85284 9 9.08803 9 9.50005V13.5001C9 13.9121 9.47038 14.1473 9.8 13.9001L12.4667 11.9001C12.7333 11.7001 12.7333 11.3001 12.4667 11.1001L9.8 9.10005Z"
+          style="fill: inherit;"></path>
+      </svg>`,
+      // 文件
+      file: `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em"
+        height="1em" fill="currentColor" viewBox="0 0 20 20" class="icon">
+        <path
+          d="M3.5 3C2.67157 3 2 3.67157 2 4.5V15.5C2 16.3284 2.67157 17 3.5 17H16.5C17.3284 17 18 16.3284 18 15.5V6.5C18 5.67157 17.3284 5 16.5 5H11.7605C11.6424 5 11.5281 4.9582 11.4379 4.88201L9.62834 3.35396C9.35767 3.12539 9.01484 3 8.66057 3H3.5ZM3 4.5C3 4.22386 3.22386 4 3.5 4H8.66057C8.77866 4 8.89294 4.0418 8.98316 4.11799L10.7927 5.64604C11.0634 5.87461 11.4062 6 11.7605 6H16.5C16.7761 6 17 6.22386 17 6.5V15.5C17 15.7761 16.7761 16 16.5 16H3.5C3.22386 16 3 15.7761 3 15.5V4.5ZM6 12H14V11H6V12Z"
+          style="fill: inherit;"></path>
+      </svg>`,
+      // 引用
+      quote: `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em"
+        height="1em" fill="currentColor" viewBox="0 0 1024 1024" class="icon">
+        <path
+          d="M427.562667 244.202667a13.994667 13.994667 0 0 1 0.213333 0.554666l16 50.624a18.048 18.048 0 0 1-8.597333 21.312l-2.133334 0.981334c-68.181333 26.197333-118.293333 77.056-151.765333 154.88a339.008 339.008 0 0 0-22.848 74.453333 138.666667 138.666667 0 1 1-55.36 191.573333l-0.170667 0.085334c-40.32-55.872-45.546667-193.92 0-299.84 42.069333-97.813333 108.458667-165.269333 197.76-200.106667l8.426667-3.2a14.442667 14.442667 0 0 1 18.474667 8.682667z m382.165333 0a13.973333 13.973333 0 0 1 0.192 0.554666l16 50.624a18.048 18.048 0 0 1-8.597333 21.312l-2.133334 0.981334c-68.181333 26.197333-118.272 77.056-151.744 154.88a339.008 339.008 0 0 0-22.869333 74.453333 138.666667 138.666667 0 1 1-55.36 191.573333l-0.170667 0.085334c-40.32-55.872-45.546667-193.92 0-299.84 42.069333-97.813333 108.458667-165.269333 197.76-200.106667l8.426667-3.2a14.442667 14.442667 0 0 1 18.496 8.682667z"
+          style="fill: inherit;"></path>
+      </svg>`,
+    };
+    const ul = document.getElementById("iconBox");
+    Object.values(icons).forEach(item => {
+      const li = document.createElement("li");
+      li.innerHTML = item;
+      ul.appendChild(li);
+    });
+  </script>
+</body>
+
+</html>
